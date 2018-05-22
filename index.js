@@ -6,8 +6,8 @@ var systemFontKeywords = require('css-system-font-keywords');
 var fontWeightKeywords = require('css-font-weight-keywords');
 var fontStyleKeywords = require('css-font-style-keywords');
 var fontStretchKeywords = require('css-font-stretch-keywords');
-var cssListHelpers = require('css-list-helpers');
 var cssFontSizeKeywords = require('css-font-size-keywords');
+var cssListHelpers = require('css-list-helpers');
 
 
 module.exports = function parseFont (value) {
@@ -74,6 +74,10 @@ module.exports = function parseFont (value) {
 			if (parts[1] != null) {
 				font.lineHeight = parseLineHeight(parts[1]);
 			}
+			else if (tokens[0] === '/') {
+				tokens.shift();
+				font.lineHeight = parseLineHeight(tokens.shift());
+ 			}
 			if (!tokens.length) {
 				throw error('Missing required font-family.');
 			}
@@ -105,12 +109,4 @@ function parseLineHeight(value) {
 		return parsed;
 	}
 	return value;
-}
-
-
-function isSize(value) {
-	return /^[\d\.]/.test(value)
-		|| value.indexOf('/') !== -1
-		|| cssFontSizeKeywords.indexOf(value) !== -1
-	;
 }
