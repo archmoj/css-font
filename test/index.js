@@ -9,18 +9,19 @@ require('./parse')
 
 
 t('readme', t => {
-	var obj = font.parse('1rem "Roboto Condensed", sans-serif');
 
-	t.deepEqual(obj,
-		{
-			size: '1rem',
-			family: ['Roboto Condensed', 'sans-serif']
-		}
-	)
+	var obj = font.parse('small-caps 1rem/1.2 "Roboto Condensed", sans-serif');
+
+	t.deepEqual(obj, {
+		size: '1rem',
+		lineHeight: 1.2,
+		variant: 'small-caps',
+		family: ['Roboto Condensed', 'sans-serif']
+	})
 
 	t.equal(
 		font.stringify(obj),
-		'1rem "Roboto Condensed", sans-serif'
+		'small-caps 1rem/1.2 "Roboto Condensed", sans-serif'
 	)
 
 	t.end()

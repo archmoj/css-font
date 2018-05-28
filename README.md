@@ -9,17 +9,14 @@ Parse or stringify the CSS [font property](https://developer.mozilla.org/en-US/d
 ```js
 var font = require('css-font');
 
-var obj = font.parse('1rem "Roboto Condensed", sans-serif');
+var obj = font.parse('small-caps 1rem/1.2 "Roboto Condensed", sans-serif');
 
 /*
 {
 	size: '1rem',
-	family: ['Roboto Condensed', 'sans-serif'],
-	style: 'normal',
-	variant: 'normal',
-	weight: 'normal',
-	stretch: 'normal',
-	lineHeight: 'normal'
+	lineHeight: 1.2,
+	variant: 'small-caps',
+	family: ['Roboto Condensed', 'sans-serif']
 }
 */
 
@@ -35,7 +32,7 @@ See [the tests](https://github.com/dy/css-font/blob/master/test/index.js) for mo
 
 ### obj = font.parse(str)
 
-Return object with font properties from the CSS font string. Object may return the following detected properties:
+Return object with font properties from the CSS font string. Detected properties:
 
 Property | Meaning
 ---|---
@@ -51,7 +48,7 @@ Property | Meaning
 
 Return string from the object with font properties by the [CSS font](https://developer.mozilla.org/en-US/docs/Web/CSS/font) syntax.
 
-The obj may contain the following properties:
+Stringified properties:
 
 Property | Meaning
 ---|---
