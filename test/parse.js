@@ -14,8 +14,8 @@ t('throws when attempting to parse a number', (t) => {
 		() => {
 			parse(42);
 		},
-		/Font argument must be a string\.$/,
-	);
+		/Font argument must be a string\.$/
+	)
 
 	t.end()
 });
@@ -25,7 +25,7 @@ t('throws when attempting to parse an empty string', (t) => {
 		() => {
 			parse('');
 		},
-		/Cannot parse an empty string\.$/,
+		/Cannot parse an empty string\.$/
 	);
 
 	t.end()
@@ -36,7 +36,7 @@ t('throws when the font-size is missing', (t) => {
 		() => {
 			parse('foo');
 		},
-		/Unknown or unsupported font token/,
+		/Unknown or unsupported font token/
 	);
 
 	t.end()
@@ -47,7 +47,7 @@ t('throws when the font-family is missing', (t) => {
 		() => {
 			parse('1rem');
 		},
-		/Missing required font-family\.$/,
+		/Missing required font-family\.$/
 	);
 
 	t.end()
@@ -57,7 +57,7 @@ systemFontKeywords.forEach((systemFont) => {
 	t('detects system font keyword: ' + systemFont, (t) => {
 		t.deepEqual(
 			parse(systemFont),
-			{ system: systemFont },
+			{ system: systemFont }
 		);
 		t.end()
 	});
@@ -69,7 +69,7 @@ t('detects size: 1rem and family: serif', (t) => {
 		{
 			family: ['serif'],
 			size: '1rem',
-		},
+		}
 	);
 	t.end()
 });
@@ -79,7 +79,7 @@ t('detects line-height: 1.2', (t) => {
 		parse('1rem/1.2 serif'),
 		{
 			lineHeight: 1.2,
-		},
+		}
 	);
 	t.end()
 });
@@ -90,7 +90,7 @@ t('detects font-size and line-height when using spaces around "/" separator', (t
 		{
 			lineHeight: 1.2,
 			size: '1rem',
-		},
+		}
 	);
 	t.end()
 });
@@ -100,7 +100,7 @@ t('preserves line-height unit', (t) => {
 		parse('1rem/1.2em serif'),
 		{
 			lineHeight: '1.2em',
-		},
+		}
 	);
 	t.end()
 });
@@ -110,7 +110,7 @@ t('unquotes each font-family', (t) => {
 		parse('1rem/1.2em foo bar, "foo bar baz", \'foo\', bar, baz'),
 		{
 			family: ['foo bar', 'foo bar baz', 'foo', 'bar', 'baz'],
-		},
+		}
 	);
 	t.end()
 });
@@ -121,7 +121,7 @@ t('preserves functions with spaces and commas inside', (t) => {
 		{
 			lineHeight: 'fn(x, y, z)',
 			size: 'fn(a, b, c)',
-		},
+		}
 	);
 	t.end()
 });
@@ -132,7 +132,7 @@ t('preserves functions with slashes inside', (t) => {
 		{
 			lineHeight: 'fn(x / y / z)',
 			size: 'fn(a / b / c)',
-		},
+		}
 	);
 	t.end()
 });
@@ -141,7 +141,7 @@ fontWeightKeywords.forEach((weight) => {
 	t('detects weight: ' + weight, (t) => {
 		compare(t,
 			parse(weight + ' 1rem serif'),
-			{ weight },
+			{ weight }
 		);
 		t.end()
 	});
@@ -151,7 +151,7 @@ fontStyleKeywords.forEach((style) => {
 	t('detects style: ' + style, (t) => {
 		compare(t,
 			parse(style + ' 1rem serif'),
-			{ style },
+			{ style }
 		);
 		t.end()
 	});
@@ -161,7 +161,7 @@ fontStretchKeywords.forEach((stretch) => {
 	t('detects stretch: ' + stretch, (t) => {
 		compare(t,
 			parse(stretch + ' 1rem serif'),
-			{ stretch },
+			{ stretch }
 		);
 		t.end()
 	});
@@ -177,7 +177,7 @@ t('throws with two undetected properties: foo bar', (t) => {
 		() => {
 			parse('foo bar');
 		},
-		/Unknown or unsupported font token: foo/,
+		/Unknown or unsupported font token: foo/
 	);
 	t.end()
 });
@@ -197,7 +197,7 @@ t('detects style, variant, weight, stretch, size, lineHeight and family', (t) =>
 				style: 'italic',
 				variant: 'small-caps',
 				weight: '500',
-			},
+			}
 		);
 	});
 	t.end()
@@ -214,7 +214,7 @@ t('overrides all props before size with normal when one prop is normal', (t) => 
 			style: 'normal',
 			variant: 'normal',
 			weight: 'normal',
-		},
+		}
 	);
 	t.end()
 });
@@ -231,7 +231,7 @@ globalKeywords.forEach((value) => {
 				style: value,
 				variant: value,
 				weight: value,
-			},
+			}
 		);
 		t.end()
 	});
@@ -248,7 +248,7 @@ t('returns defaults for style, variant, weight, stretch and lineHeight', (t) => 
 			// style: 'normal',
 			// variant: 'normal',
 			// weight: 'normal',
-		},
+		}
 	);
 	t.end()
 });

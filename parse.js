@@ -20,15 +20,7 @@ module.exports = function parseFont (value) {
 		return { system: value }
 	}
 
-	var font = {
-		// style: 'normal',
-		// variant: 'normal',
-		// weight: 'normal',
-		// stretch: 'normal',
-		// size: undefined,
-		// lineHeight: 'normal',
-		// family: []
-	}
+	var font = {}
 
 	var isLocked = false
 	var tokens = splitBy(value, /\s+/)

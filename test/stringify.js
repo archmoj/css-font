@@ -1,7 +1,8 @@
+'use strict'
+
 var t = require('tape')
 var s = require('../stringify')
 
-var globalKeywords = require('css-global-keywords')
 var systemFontKeywords = require('css-system-font-keywords')
 var fontWeightKeywords = require('css-font-weight-keywords')
 var fontStyleKeywords = require('css-font-style-keywords')

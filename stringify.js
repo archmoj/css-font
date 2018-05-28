@@ -25,7 +25,7 @@ var defaults = {
 	weight: 'normal',
 	stretch: 'normal',
 	size: '1rem',
-	lh: '1',
+	lineHeight: '1',
 	family: 'serif'
 }
 
@@ -36,7 +36,7 @@ module.exports = function stringifyFont (o) {
 		weight: 'weight w font-weight fontWeight fontweight',
 		stretch: 'stretch font-stretch fontStretch fontstretch width',
 		size: 'size s font-size fontSize fontsize height',
-		lh: 'lh line-height lineHeight lineheight leading',
+		lineHeight: 'lh line-height lineHeight lineheight leading',
 		family: 'font family fontFamily font-family fontfamily type typeface face',
 		system: 'system reserved default global',
 	})
@@ -73,7 +73,7 @@ module.exports = function stringifyFont (o) {
 	result.push(o.variant)
 	result.push(o.weight)
 	result.push(o.stretch)
-	result.push(o.size + (o.lh == null ? '' : ('/' + o.lh)))
+	result.push(o.size + (o.lineHeight == null ? '' : ('/' + o.lineHeight)))
 	result.push(o.family)
 
 	return result.filter(Boolean).join(' ')
