@@ -106,9 +106,6 @@ t('parse-css-font cases', t => {
 		'italic small-caps 500 condensed 1rem/1.2 serif',
 		'stringifies style, variant, weight, stretch, size, lineHeight and family'
 	)
-})
 
-
-t('ignores default values', t => {
-
+	t.end()
 })

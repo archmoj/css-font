@@ -1,21 +1,15 @@
 # css-font [![NPM version](http://img.shields.io/npm/v/css-font.svg?style=flat)](https://www.npmjs.org/package/css-font) [![Travis Build Status](https://img.shields.io/travis/dy/css-font.svg?label=unix)](https://travis-ci.org/dy/css-font)
 
-[![npm](https://nodei.co/npm/css-font.svg?downloads=true)](https://nodei.co/npm/css-font/)
-
-Parses/stringifies the CSS [font property](https://developer.mozilla.org/en-US/docs/Web/CSS/font#font-variant-css21).
-
-## Installation
-
-```
-$ npm install css-font [--save[-dev]]
-```
+Parse or stringify the CSS [font property](https://developer.mozilla.org/en-US/docs/Web/CSS/font) string.
 
 ## Usage
 
-```js
-var {parse, stringify} = require('css-font');
+[![npm install css-font](https://nodei.co/npm/css-font.png?mini=true)](https://npmjs.org/package/css-font/)
 
-parse('1rem "Roboto Condensed", sans-serif;');
+```js
+var font = require('css-font');
+
+var obj = font.parse('1rem "Roboto Condensed", sans-serif');
 
 /*
 {
@@ -28,6 +22,10 @@ parse('1rem "Roboto Condensed", sans-serif;');
 	lineHeight: 'normal'
 }
 */
+
+font.stringify(obj)
+
+// '1rem "Roboto Condensed", sans-serif'
 ```
 
 See [the tests](https://github.com/dy/css-font/blob/master/test/index.js) for more scenarios.

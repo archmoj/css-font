@@ -1,7 +1,6 @@
 'use strict'
 
 var pick = require('pick-by-alias')
-var a2o = require('./lib/util').a2o
 var isSize = require('./lib/util').isSize
 
 var globals = a2o(require('css-global-keywords'))
@@ -84,4 +83,14 @@ function verify (value, values) {
 	if (value && !values[value] && !globals[value]) throw Error('Unknown keyword `' + value +'`')
 
 	return value
+}
+
+
+// ['a', 'b'] -> {a: true, b: true}
+function a2o (a) {
+	var o = {}
+	for (var i = 0; i < a.length; i++) {
+		o[a[i]] = 1
+	}
+	return o
 }

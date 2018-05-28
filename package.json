@@ -1,7 +1,7 @@
 {
   "name": "css-font",
   "version": "2.0.2",
-  "description": "Parse the CSS font property value.",
+  "description": "Parse or stringify CSS font property.",
   "main": "index.js",
   "scripts": {
     "test": "npm run cover && npm run check-coverage",
@@ -16,7 +16,9 @@
     "css",
     "parse",
     "font",
-    "shorthand"
+    "shorthand",
+    "parse-css-font",
+    "stringify-css-font"
   ],
   "author": "Dmitry Yv <dfcreative@gmail.com>",
   "license": "MIT",
@@ -25,21 +27,18 @@
   },
   "homepage": "https://github.com/dy/css-font#readme",
   "dependencies": {
-    "balanced-match": "^1.0.0",
     "css-font-size-keywords": "^1.0.0",
     "css-font-stretch-keywords": "^1.0.1",
     "css-font-style-keywords": "^1.0.1",
     "css-font-weight-keywords": "^1.0.0",
     "css-global-keywords": "^1.0.1",
-    "css-list-helpers": "^1.0.1",
     "css-system-font-keywords": "^1.0.0",
     "pick-by-alias": "^1.2.0",
-    "split-string-words": "^1.0.0",
+    "string-split-by": "^1.0.0",
     "unquote": "^1.1.0"
   },
   "devDependencies": {
-    "istanbul": "^0.3.21",
-    "parse-css-font": "^3.0.2",
-    "tape": "^4.2.0"
+    "istanbul": "^0.4.5",
+    "tape": "^4.9.0"
   }
 }
