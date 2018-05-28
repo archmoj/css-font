@@ -4,7 +4,7 @@
   "description": "Parse or stringify CSS font property.",
   "main": "index.js",
   "scripts": {
-    "test": "npm run cover && npm run check-coverage",
+    "test": "node test",
     "cover": "istanbul cover test/index.js",
     "check-coverage": "istanbul check-coverage"
   },
