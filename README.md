@@ -1,4 +1,4 @@
-# css-font [![unstable](https://img.shields.io/badge/stability-unstable-orange.svg)](http://github.com/badges/stability-badges) [![Travis Build Status](https://img.shields.io/travis/dy/css-font.svg?label=css-font)](https://travis-ci.org/dy/css-font)
+# css-font [![unstable](https://img.shields.io/badge/stability-unstable-orange.svg)](http://github.com/badges/stability-badges) [![Travis Build Status](https://img.shields.io/travis/dy/css-font.svg?label=test)](https://travis-ci.org/dy/css-font)
 
 Parse or stringify the CSS [font property](https://developer.mozilla.org/en-US/docs/Web/CSS/font) string.
 
