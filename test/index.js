@@ -1,7 +1,8 @@
 ﻿'use strict'
 
 var t = require('tape')
-var font = require('../');
+var font = require('../')
+var s = font.stringify, p = font.parse
 
 // run separate tests
 require('./stringify')
@@ -16,13 +17,29 @@ t('readme', t => {
 		size: '1rem',
 		lineHeight: 1.2,
 		variant: 'small-caps',
+		stretch: 'normal',
+		weight: 'normal',
+		style: 'normal',
 		family: ['Roboto Condensed', 'sans-serif']
 	})
 
 	t.equal(
 		font.stringify(obj),
-		'small-caps 1rem/1.2 "Roboto Condensed", sans-serif'
+		'normal small-caps 1rem/1.2 "Roboto Condensed", sans-serif'
 	)
+
+	t.end()
+})
+
+t.skip('reversible', t => {
+
+	// console.log(s({
+	// 	family: ["Roboto", "sans-serif"],
+	// 	stretch: "normal",
+	// 	weight: 100
+	// }))
+
+	console.log(p('100 normal 1rem "Roboto", sans-serif'))
 
 	t.end()
 })

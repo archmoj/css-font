@@ -20,43 +20,47 @@ module.exports = function parseFont (value) {
 		return { system: value }
 	}
 
-	var font = {}
+	var font = {
+		style: 'normal',
+		variant: 'normal',
+		weight: 'normal',
+		stretch: 'normal',
+		lineHeight: 'normal',
+		size: '1rem',
+		family: ['serif']
+	}
 
-	var isLocked = false
 	var tokens = splitBy(value, /\s+/)
+	var token
 
-	for (var token = tokens.shift(); !!token; token = tokens.shift()) {
-		if (token === 'normal' || globalKeywords.indexOf(token) !== -1) {
+	while (token = tokens.shift()) {
+		if (globalKeywords.indexOf(token) !== -1) {
 			['style', 'variant', 'weight', 'stretch'].forEach(function(prop) {
 				font[prop] = token
 			})
-			isLocked = true
-			continue
-		}
-
-		if (fontWeightKeywords.indexOf(token) !== -1) {
-			if (isLocked) {
-				continue
-			}
-			font.weight = token
-			continue
+			return font
 		}
 
 		if (fontStyleKeywords.indexOf(token) !== -1) {
-			if (isLocked) {
-				continue
-			}
 			font.style = token
 			continue
 		}
 
+		if (token === 'normal' || token === 'small-caps') {
+			font.variant = token
+			continue
+		}
+
 		if (fontStretchKeywords.indexOf(token) !== -1) {
-			if (isLocked) {
-				continue
-			}
 			font.stretch = token
 			continue
 		}
+
+		if (fontWeightKeywords.indexOf(token) !== -1) {
+			font.weight = token
+			continue
+		}
+
 
 		if (isSize(token)) {
 			var parts = splitBy(token, '/')
@@ -68,25 +72,16 @@ module.exports = function parseFont (value) {
 				tokens.shift()
 				font.lineHeight = parseLineHeight(tokens.shift())
  			}
+
 			if (!tokens.length) {
 				throw new Error('Missing required font-family.')
 			}
-
 			font.family = splitBy(tokens.join(' '), /\s*,\s*/).map(unquote)
 
 			return font
 		}
 
-
-		if (isLocked) {
-			continue
-		}
-
-		if (token !== 'normal' && token !== 'small-caps') {
-			throw new Error('Unknown or unsupported font token: ' + token)
-		}
-
-		font.variant = token
+		throw new Error('Unknown or unsupported font token: ' + token)
 	}
 
 	throw new Error('Missing required font-size.')
