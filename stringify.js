@@ -21,11 +21,11 @@ var fams = {
 
 var defaults = {
 	style: 'normal',
-	variant: 'small-caps',
+	variant: 'normal',
 	weight: 'normal',
 	stretch: 'normal',
 	size: '1rem',
-	lineHeight: '1',
+	lineHeight: 'normal',
 	family: 'serif'
 }
 
@@ -71,10 +71,15 @@ module.exports = function stringifyFont (o) {
 
 	result.push(o.style)
 	if (o.variant !== o.style) result.push(o.variant)
-	if (o.weight !== o.variant && o.weight !== o.style) result.push(o.weight)
-	if (o.stretch !== o.weight && o.stretch !== o.variant && o.stretch !== o.style) result.push(o.stretch)
 
-	result.push(o.size + (o.lineHeight == null ? '' : ('/' + o.lineHeight)))
+	if (o.weight !== o.variant &&
+		o.weight !== o.style) result.push(o.weight)
+
+	if (o.stretch !== o.weight &&
+		o.stretch !== o.variant &&
+		o.stretch !== o.style) result.push(o.stretch)
+
+	result.push(o.size + (o.lineHeight == null || o.lineHeight === 'normal' || (o.lineHeight + '' === '1')  ? '' : ('/' + o.lineHeight)))
 	result.push(o.family)
 
 	return result.filter(Boolean).join(' ')

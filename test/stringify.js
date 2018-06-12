@@ -111,3 +111,17 @@ t('parse-css-font cases', t => {
 	t.end()
 })
 
+
+t('Ignore normal line-height', t => {
+	t.equal(s({
+		family: ["Roboto", "sans-serif"],
+		lineHeight: "normal",
+		size: "1rem",
+		stretch: "condensed",
+		style: "normal",
+		variant: "normal",
+		weight: "100"
+	}), 'normal 100 condensed 1rem "Roboto", sans-serif')
+
+	t.end()
+})
