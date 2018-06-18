@@ -35,7 +35,7 @@ module.exports = function stringifyFont (o) {
 		variant: 'variant font-variant fontVariant fontvariant var capitalization',
 		weight: 'weight w font-weight fontWeight fontweight',
 		stretch: 'stretch font-stretch fontStretch fontstretch width',
-		size: 'size s font-size fontSize fontsize height',
+		size: 'size s font-size fontSize fontsize height em emSize',
 		lineHeight: 'lh line-height lineHeight lineheight leading',
 		family: 'font family fontFamily font-family fontfamily type typeface face',
 		system: 'system reserved default global',

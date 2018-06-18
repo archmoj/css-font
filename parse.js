@@ -9,15 +9,24 @@ var fontStretchKeywords = require('css-font-stretch-keywords')
 var splitBy = require('string-split-by')
 var isSize = require('./lib/util').isSize
 
-module.exports = function parseFont (value) {
+
+module.exports = parseFont
+
+
+var cache = parseFont.cache = {}
+
+
+function parseFont (value) {
 	if (typeof value !== 'string') throw new Error('Font argument must be a string.')
+
+	if (cache[value]) return cache[value]
 
 	if (value === '') {
 		throw new Error('Cannot parse an empty string.')
 	}
 
 	if (systemFontKeywords.indexOf(value) !== -1) {
-		return { system: value }
+		return cache[value] = {system: value}
 	}
 
 	var font = {
@@ -38,7 +47,8 @@ module.exports = function parseFont (value) {
 			['style', 'variant', 'weight', 'stretch'].forEach(function(prop) {
 				font[prop] = token
 			})
-			return font
+
+			return cache[value] = font
 		}
 
 		if (fontStyleKeywords.indexOf(token) !== -1) {
@@ -78,7 +88,7 @@ module.exports = function parseFont (value) {
 			}
 			font.family = splitBy(tokens.join(' '), /\s*,\s*/).map(unquote)
 
-			return font
+			return cache[value] = font
 		}
 
 		throw new Error('Unknown or unsupported font token: ' + token)
