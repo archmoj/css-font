@@ -75,6 +75,9 @@ This will run tests and generate a code coverage report. Anything less than 100%
 
 * [Jed Mao](https://github.com/jedmao) for [parse-css-font](https://github.com/jedmao/parse-css-font) and set of related CSS packages.
 
+## Similar 
+
+* [css-font-parser](https://github.com/bramstein/css-font-parser)
 
 ## License
 
