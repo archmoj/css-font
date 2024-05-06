@@ -5,7 +5,11 @@ var isSize = require('./lib/util').isSize
 
 var globals = a2o(require('css-global-keywords'))
 var systems = a2o(require('css-system-font-keywords'))
-var weights = a2o(require('css-font-weight-keywords'))
+var weights = a2o(require('css-font-weight-keywords')
+	// until https://github.com/jednano/css-font-weight-keywords/issues/1 is resolved
+	// we need to add extra font-weight integers
+	.concat(Array(1000).fill(1).map(function(n, i) { return String(n + i) }))
+)
 var styles = a2o(require('css-font-style-keywords'))
 var stretches = a2o(require('css-font-stretch-keywords'))
 
